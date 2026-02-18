@@ -1,96 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Creepster&family=Special+Elite&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Design system — escape room dark theme */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 0 0% 4%;
+    --foreground: 45 30% 80%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 0 0% 8%;
+    --card-foreground: 45 30% 80%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 45 30% 80%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 38 90% 50%;
+    --primary-foreground: 0 0% 5%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 45 30% 75%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 45 20% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 38 70% 35%;
+    --accent-foreground: 45 30% 90%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 0 0% 18%;
+    --input: 0 0% 12%;
+    --ring: 38 90% 50%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 0 0% 6%;
+    --sidebar-foreground: 45 30% 75%;
+    --sidebar-primary: 38 90% 50%;
+    --sidebar-primary-foreground: 0 0% 5%;
+    --sidebar-accent: 0 0% 10%;
+    --sidebar-accent-foreground: 45 30% 75%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 38 90% 50%;
   }
 }
 
@@ -101,5 +56,249 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Special Elite', serif;
   }
+}
+
+/* ── Lock screen ── */
+.lock-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at 50% 60%, hsl(38 60% 8% / 0.9) 0%, hsl(0 0% 2%) 70%);
+  position: relative;
+  overflow: hidden;
+}
+
+.candle-glow {
+  position: absolute;
+  bottom: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, hsl(38 90% 50% / 0.18) 0%, transparent 70%);
+  animation: flicker 3s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes flicker {
+  0%   { opacity: 0.7; transform: translateX(-50%) scale(1); }
+  25%  { opacity: 1;   transform: translateX(-50%) scale(1.05); }
+  50%  { opacity: 0.8; transform: translateX(-50%) scale(0.97); }
+  75%  { opacity: 1;   transform: translateX(-50%) scale(1.03); }
+  100% { opacity: 0.75; transform: translateX(-50%) scale(1); }
+}
+
+.lock-container {
+  background: hsl(0 0% 7%);
+  border: 1px solid hsl(38 40% 20%);
+  border-radius: 1.5rem;
+  padding: 2.5rem 2rem;
+  width: min(360px, 92vw);
+  box-shadow:
+    0 0 40px hsl(38 90% 30% / 0.15),
+    0 0 2px hsl(38 90% 50% / 0.3),
+    inset 0 1px 0 hsl(38 40% 30% / 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.8rem;
+}
+
+.lock-header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.lock-icon {
+  font-size: 2.5rem;
+  filter: drop-shadow(0 0 8px hsl(38 90% 50% / 0.6));
+  animation: pulse-glow 2.5s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { filter: drop-shadow(0 0 6px hsl(38 90% 50% / 0.5)); }
+  50%       { filter: drop-shadow(0 0 16px hsl(38 90% 50% / 0.9)); }
+}
+
+.lock-title {
+  font-family: 'Creepster', serif;
+  font-size: 1.8rem;
+  letter-spacing: 0.3em;
+  color: hsl(38 90% 50%);
+  text-shadow: 0 0 12px hsl(38 90% 50% / 0.6);
+  margin: 0;
+}
+
+.lock-subtitle {
+  font-size: 0.75rem;
+  color: hsl(45 20% 40%);
+  letter-spacing: 0.1em;
+  margin: 0;
+  font-style: italic;
+}
+
+/* ── Dots display ── */
+.display-row {
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+  transition: transform 0.1s;
+}
+
+.display-row.shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  15%  { transform: translateX(-8px); }
+  30%  { transform: translateX(8px); }
+  45%  { transform: translateX(-6px); }
+  60%  { transform: translateX(6px); }
+  75%  { transform: translateX(-4px); }
+  90%  { transform: translateX(4px); }
+}
+
+.display-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.dot-empty {
+  background: hsl(0 0% 15%);
+  border: 2px solid hsl(0 0% 25%);
+}
+
+.dot-filled {
+  background: hsl(38 90% 50%);
+  border: 2px solid hsl(38 90% 65%);
+  box-shadow: 0 0 10px hsl(38 90% 50% / 0.8);
+}
+
+.dot-error {
+  background: hsl(0 70% 45%);
+  border: 2px solid hsl(0 80% 60%);
+  box-shadow: 0 0 10px hsl(0 70% 45% / 0.8);
+}
+
+.dot-success {
+  background: hsl(120 60% 35%);
+  border: 2px solid hsl(120 60% 50%);
+  box-shadow: 0 0 10px hsl(120 60% 35% / 0.8);
+}
+
+.error-msg {
+  font-size: 0.8rem;
+  color: hsl(0 70% 55%);
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 8px hsl(0 70% 45% / 0.6);
+  margin: -0.8rem 0;
+}
+
+.success-msg {
+  font-size: 0.8rem;
+  color: hsl(120 60% 50%);
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 8px hsl(120 60% 35% / 0.6);
+  margin: -0.8rem 0;
+}
+
+/* ── Keypad ── */
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.key-btn {
+  aspect-ratio: 1;
+  border-radius: 0.75rem;
+  border: 1px solid hsl(38 30% 18%);
+  background: hsl(0 0% 10%);
+  color: hsl(45 30% 78%);
+  font-family: 'Special Elite', serif;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: all 0.12s ease;
+  box-shadow:
+    0 2px 4px hsl(0 0% 0% / 0.4),
+    inset 0 1px 0 hsl(38 30% 22% / 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.key-btn:hover {
+  background: hsl(0 0% 15%);
+  border-color: hsl(38 60% 35%);
+  color: hsl(38 90% 65%);
+  box-shadow:
+    0 0 12px hsl(38 90% 40% / 0.25),
+    inset 0 1px 0 hsl(38 40% 30% / 0.4);
+  transform: translateY(-1px);
+}
+
+.key-btn:active {
+  transform: translateY(1px) scale(0.97);
+  background: hsl(0 0% 8%);
+}
+
+.key-clear {
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  color: hsl(0 60% 55%);
+  border-color: hsl(0 40% 20%);
+}
+
+.key-clear:hover {
+  color: hsl(0 80% 65%);
+  border-color: hsl(0 60% 35%);
+  box-shadow: 0 0 12px hsl(0 70% 45% / 0.3);
+}
+
+.key-del {
+  color: hsl(45 20% 55%);
+}
+
+/* ── Reveal screen ── */
+.reveal-screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: hsl(0 0% 2%);
+  cursor: pointer;
+  animation: fadeIn 0.6s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.reveal-image {
+  max-width: min(520px, 95vw);
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 60px hsl(38 60% 20% / 0.5), 0 0 2px hsl(38 90% 50% / 0.3);
+}
+
+.reveal-hint {
+  margin-top: 1.2rem;
+  font-size: 0.7rem;
+  color: hsl(45 20% 30%);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-style: italic;
 }
