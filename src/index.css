@@ -269,6 +269,208 @@
   color: hsl(45 20% 55%);
 }
 
+/* ── File System screen ── */
+.file-system-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at 50% 60%, hsl(38 60% 6% / 0.95) 0%, hsl(0 0% 2%) 70%);
+  animation: fadeIn 0.5s ease-in;
+  padding: 1rem;
+}
+
+.file-explorer-panel {
+  background: hsl(0 0% 5%);
+  border: 1px solid hsl(38 60% 25%);
+  border-radius: 0.75rem;
+  width: min(480px, 96vw);
+  box-shadow:
+    0 0 60px hsl(38 90% 30% / 0.15),
+    0 0 2px hsl(38 90% 50% / 0.25),
+    inset 0 1px 0 hsl(38 40% 25% / 0.2);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.file-explorer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1.2rem;
+  border-bottom: 1px solid hsl(38 40% 16%);
+  background: hsl(0 0% 7%);
+}
+
+.file-explorer-title {
+  font-family: 'Creepster', serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.2em;
+  color: hsl(38 90% 50%);
+  text-shadow: 0 0 10px hsl(38 90% 50% / 0.6);
+}
+
+.file-lock-btn {
+  background: none;
+  border: 1px solid hsl(38 40% 20%);
+  border-radius: 0.4rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  color: hsl(45 20% 50%);
+  transition: all 0.15s ease;
+}
+
+.file-lock-btn:hover {
+  border-color: hsl(38 60% 35%);
+  color: hsl(38 90% 60%);
+  box-shadow: 0 0 8px hsl(38 90% 40% / 0.3);
+}
+
+.file-explorer-meta {
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  color: hsl(38 30% 30%);
+  padding: 0.5rem 1.2rem;
+  border-bottom: 1px solid hsl(38 20% 10%);
+  background: hsl(0 0% 4%);
+}
+
+.file-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  padding: 1.5rem;
+}
+
+.file-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1.4rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid hsl(38 30% 14%);
+  background: hsl(0 0% 8%);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: 0 2px 6px hsl(0 0% 0% / 0.4);
+}
+
+.file-item:hover {
+  background: hsl(0 0% 11%);
+  border-color: hsl(38 60% 30%);
+  box-shadow:
+    0 0 18px hsl(38 90% 40% / 0.2),
+    inset 0 1px 0 hsl(38 40% 25% / 0.3);
+  transform: translateY(-2px);
+}
+
+.file-item:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.file-icon {
+  font-size: 2.8rem;
+  filter: drop-shadow(0 0 6px hsl(38 90% 50% / 0.4));
+  transition: filter 0.15s ease;
+}
+
+.file-item:hover .file-icon {
+  filter: drop-shadow(0 0 14px hsl(38 90% 50% / 0.8));
+}
+
+.file-name {
+  font-family: 'Creepster', serif;
+  font-size: 1.3rem;
+  letter-spacing: 0.1em;
+  color: hsl(45 30% 75%);
+  transition: color 0.15s ease;
+}
+
+.file-item:hover .file-name {
+  color: hsl(38 90% 60%);
+  text-shadow: 0 0 8px hsl(38 90% 50% / 0.5);
+}
+
+.file-explorer-footer {
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  color: hsl(38 20% 22%);
+  text-align: center;
+  padding: 0.6rem;
+  border-top: 1px solid hsl(38 20% 10%);
+  background: hsl(0 0% 4%);
+}
+
+/* ── Lightbox ── */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: hsl(0 0% 2% / 0.96);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease-in;
+  z-index: 50;
+  padding: 1rem;
+}
+
+.lightbox-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  max-width: min(600px, 98vw);
+  width: 100%;
+}
+
+.lightbox-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.lightbox-back {
+  background: none;
+  border: 1px solid hsl(38 40% 20%);
+  border-radius: 0.4rem;
+  padding: 0.35rem 0.8rem;
+  font-family: 'Special Elite', serif;
+  font-size: 0.75rem;
+  color: hsl(45 20% 50%);
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  transition: all 0.15s ease;
+}
+
+.lightbox-back:hover {
+  border-color: hsl(38 60% 35%);
+  color: hsl(38 90% 60%);
+  box-shadow: 0 0 8px hsl(38 90% 40% / 0.25);
+}
+
+.lightbox-filename {
+  font-family: 'Creepster', serif;
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  color: hsl(38 90% 50%);
+  text-shadow: 0 0 8px hsl(38 90% 50% / 0.5);
+}
+
+.lightbox-image {
+  max-width: 100%;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 0.5rem;
+  border: 1px solid hsl(38 40% 20%);
+  box-shadow:
+    0 0 60px hsl(38 60% 20% / 0.4),
+    0 0 2px hsl(38 90% 50% / 0.25);
+}
+
 /* ── Reveal screen ── */
 .reveal-screen {
   min-height: 100vh;
